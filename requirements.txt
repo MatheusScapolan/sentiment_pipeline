@@ -1,0 +1,19 @@
+# Dependências do sentiment_pipeline
+# Instale com: pip install -r requirements.txt
+
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+pandas>=2.0
+nltk>=3.8
+lightgbm>=4.0
+matplotlib>=3.7
+gradio>=4.0
+
+# Opcionais
+# gensim>=4.3   necessário para estratégia word2vec sem GloVe
+# optuna>=3.3   necessário para busca bayesiana de hiperparâmetros
+
+# Desenvolvimento e testes
+pytest>=7.4
+pytest-cov>=4.1
