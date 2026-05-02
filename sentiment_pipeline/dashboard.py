@@ -507,7 +507,7 @@ inglês, português, espanhol e outros idiomas suportados pelo NLTK.
 Este projeto foi desenvolvido como atividade ponderada do Módulo 6 do curso de
 Sistemas de Informação do Inteli. O módulo aborda o processamento e análise de
 textos com inteligência artificial, com ênfase em classificação de sentimentos,
-vetorização de texto e machine learning clássico.
+vetorização de texto e machine learning.
 
 **O que este pipeline faz**
 
