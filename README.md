@@ -379,7 +379,17 @@ resultado = pre.transform(["Jamais voltaria a esse restaurante"])
 
 ## Funcionalidade extra: Dashboard Gradio
 
-Esta funcionalidade não foi solicitada na atividade ponderada, mas resolve um problema real: após executar dez experimentos, comparar resultados em uma tabela CSV não é intuitivo. O dashboard transforma esses resultados em uma interface visual interativa.
+Esta funcionalidade não foi solicitada na atividade ponderada, mas resolve um problema real de usabilidade: após executar dez experimentos, comparar resultados em uma tabela CSV não é intuitivo nem revelador. O dashboard transforma esses resultados em uma interface visual interativa acessível pelo navegador.
+
+O módulo `dashboard.py` é construído inteiramente com Gradio e organizado em três abas.
+
+A primeira aba, **Resultados dos Experimentos**, carrega o CSV gerado pelo script de experimentos e exibe um gráfico de barras comparando F1-macro de validação e de teste lado a lado para cada experimento, uma tabela com ranking completo e posições numeradas, e uma análise automática em texto português do melhor e do pior pipeline identificado.
+
+A segunda aba, **Classificação em Tempo Real**, permite carregar qualquer pipeline serializado em `.pkl` e classificar textos digitados diretamente na interface. O resultado inclui a classe predita, a confiança do modelo e o nome do pipeline em uso. Cinco exemplos de textos estão disponíveis para facilitar o teste.
+
+A terceira aba, **Sobre o Projeto**, apresenta um resumo contextualizado do projeto para quem acessa o dashboard sem ter lido a documentação completa.
+
+O Gradio foi escolhido por estar alinhado com o eixo de visualização de dados do módulo, por ser amplamente utilizado na comunidade de machine learning para demonstração de modelos, e por não exigir conhecimento de desenvolvimento web para produzir uma interface funcional e apresentável.
 
 O módulo `dashboard.py` é construído com Gradio 4.x e implementa quatro correções técnicas relevantes.
 
