@@ -109,6 +109,10 @@ O módulo `_normalizar_emojis` preserva caracteres acentuados ao verificar a cat
 
 A função `carregar_dataset` em `utils.py` aceita qualquer CSV com configuração explícita de colunas, mapeamento de classes e codificação. Ela inclui inferência automática do mapeamento quando não fornecido, reconhecendo padrões comuns como `{"positive", "negative"}`, `{"positivo", "negativo"}`, `{"1", "0"}`, `{"bom", "ruim"}` e outros. Quando o padrão não é reconhecido, o mapeamento é feito por ordem alfabética com aviso no log.
 
+Para lidar com CSVs reais e inconsistentes, o carregamento usa o parser Python do pandas e ignora linhas mal formatadas. Isso torna a leitura mais robusta, mesmo que algumas linhas sejam descartadas.
+
+Quando `coluna_rotulo` é `"label"` e a coluna `overall_rating` existe, o pipeline cria automaticamente o rótulo binário: notas 4 e 5 viram 1 (positivo), notas 1 e 2 viram 0 (negativo) e notas 3 são removidas.
+
 A função `carregar_imdb` é mantida como atalho de compatibilidade, delegando para `carregar_dataset` com os parâmetros padrão do IMDB.
 
 ### Avaliação com nomes de classe customizados
@@ -208,7 +212,36 @@ python scripts/experimentos.py \
     --coluna_rotulo classe \
     --classe_positiva bom \
     --classe_negativa ruim \
-    --idioma portuguese
+    --idioma portuguese \
+    --separador ";"
+```
+
+### Dataset com encoding Latin-1
+
+```bash
+python scripts/experimentos.py \
+    --dataset data/dados_latin1.csv \
+    --coluna_texto comentario \
+    --coluna_rotulo classe \
+    --classe_positiva bom \
+    --classe_negativa ruim \
+    --idioma portuguese \
+    --separador ";" \
+    --encoding latin1
+```
+
+### B2W Reviews (label automático)
+
+```bash
+python scripts/experimentos.py \
+    --dataset data/B2W-Reviews01.csv \
+    --coluna_texto review_text \
+    --coluna_rotulo label \
+    --classe_positiva 1 \
+    --classe_negativa 0 \
+    --idioma portuguese \
+    --separador "," \
+    --encoding latin1
 ```
 
 ### Como biblioteca Python
